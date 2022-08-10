@@ -1,6 +1,6 @@
 from urllib import request
 
-import Transactions as Transactions
+# import Transactions as Transactions
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import AccountForm, TransactionForm
 from .models import Account, Transaction
@@ -34,10 +34,10 @@ def create_account(request):
 # function will render the balance page
 def balance(request, pk):
     account = get_object_or_404(Account, pk=pk)  # retrieve acct using primary key
-    transactions = Transactions.filter(account=pk)  # retrieve all acct transactions
+    transactions = Transaction.Transactions.filter(account=pk)  # retrieve all acct transactions
     current_total = account.initial_deposit  # create acct total variable starting w/ initial deposit
-    table_contents - {}  # creates dictionary into which transaction info will be placed
-    for t in transactions:  # loo[
+    table_contents = {}  # creates dictionary into which transaction info will be placed
+    for t in transactions:  # loop
         if t.type == 'Deposit':
             current_total += t.amount  # deposit add to amount
             table_contents.update({t: current_total})  # add transaction and total to the dictionary
